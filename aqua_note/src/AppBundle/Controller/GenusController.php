@@ -9,8 +9,10 @@
 namespace AppBundle\Controller;
 
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class GenusController extends Controller
@@ -24,15 +26,33 @@ class GenusController extends Controller
     public function showAction($genusName)
     {
 
-        $notes = ['Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            'Consectetur culpa cumque doloribus eligendi incidunt',
-            'laudantium maiores molestiae necessitatibus quas ratione!'];
 
         return $this->render('genus/show.html.twig', [
-            'name' => $genusName,
-            'notes' => $notes
+            'name' => $genusName
         ]);
 
+    }
+
+
+    /**
+     * @Route("/genus/{genusName}/notes")
+     * @Method("GET")
+     *
+     */
+
+    public function getNotesAction()
+    {
+        $notes = [
+            ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'],
+            ['id' => 2, 'username' => 'AquaPelham', 'avatarUri' => '/images/ryan.jpeg', 'note' => 'Amet blanditiis, cupiditate distinctio enim error'],
+            ['id' => 3, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'ipsum iste nostrum ratione soluta voluptatibus!'],
+        ];
+
+        $data = [
+            'notes' => $notes
+        ];
+
+        return new JsonResponse($data);
     }
 
 }
