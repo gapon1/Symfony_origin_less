@@ -27,15 +27,16 @@ class GenusController extends Controller
     {
 
 
+
         return $this->render('genus/show.html.twig', [
-            'name' => $genusName
+            'name' => $genusName,
         ]);
 
     }
 
 
     /**
-     * @Route("/genus/{genusName}/notes")
+     * @Route("/genus/{genusName}/notes", name="genus_show_notes")
      * @Method("GET")
      *
      */
@@ -43,7 +44,7 @@ class GenusController extends Controller
     public function getNotesAction()
     {
         $notes = [
-            ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'],
+            ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'date' => 'Dec. 12, 2019'],
             ['id' => 2, 'username' => 'AquaPelham', 'avatarUri' => '/images/ryan.jpeg', 'note' => 'Amet blanditiis, cupiditate distinctio enim error'],
             ['id' => 3, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'ipsum iste nostrum ratione soluta voluptatibus!'],
         ];
