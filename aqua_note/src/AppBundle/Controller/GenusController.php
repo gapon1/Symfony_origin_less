@@ -26,10 +26,13 @@ class GenusController extends Controller
     public function showAction($genusName)
     {
 
+        $funFact = "Octopuses can change the color of their body in just *three-tenths* of a second!";
 
+        $funFact = $this->get('markdown.parser')->transform($funFact);
 
         return $this->render('genus/show.html.twig', [
             'name' => $genusName,
+            'funFact' => $funFact
         ]);
 
     }
@@ -43,6 +46,8 @@ class GenusController extends Controller
 
     public function getNotesAction()
     {
+
+
         $notes = [
             ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'date' => 'Dec. 12, 2019'],
             ['id' => 2, 'username' => 'AquaPelham', 'avatarUri' => '/images/ryan.jpeg', 'note' => 'Amet blanditiis, cupiditate distinctio enim error'],
