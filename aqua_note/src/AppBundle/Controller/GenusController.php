@@ -27,6 +27,10 @@ class GenusController extends Controller
     {
         $genus = new Genus();
         $genus->setName("ocupus".rand(0, 100));
+        $genus->setFunFact("fun fact");
+        $genus->setSubFamily("Ocupus");
+        $genus->setSpecCount(rand(100, 999));
+
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($genus);
@@ -36,7 +40,17 @@ class GenusController extends Controller
     }
 
 
-
+    /**
+     *
+     * @Route("/genus")
+     */
+    public function listAtion()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $genuses = $em->getRepository("AppBundle:Genus")->findAll();
+        dump($genuses);
+        die("end");
+    }
 
 
     /**
