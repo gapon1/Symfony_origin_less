@@ -111,5 +111,9 @@ class Genus
         $this->funFact = $funFact;
     }
 
+    public function updated()
+    {
+        return new \DateTime('-'.rand(0, 100).'days');
+    }
 
 }
