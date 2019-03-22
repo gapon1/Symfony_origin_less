@@ -86,7 +86,9 @@ class GenusController extends Controller
         }
 
 
-        $transformer = new MarkdownTransformer();
+        $transformer = new MarkdownTransformer($this->get('markdown.parser'));
+
+
         $funFact = $transformer->parse($genus->getFunFact());
 
         /*
