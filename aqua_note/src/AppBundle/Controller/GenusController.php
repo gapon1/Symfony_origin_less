@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Genus;
+use AppBundle\Entity\GenusNote;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,9 +32,18 @@ class GenusController extends Controller
         $genus->setSubFamily("Ocupus");
         $genus->setSpecCount(rand(100, 999));
 
+        $genusNote = new GenusNote();
+        $genusNote->setUsername('vitalii');
+        $genusNote->setUseAvatarFilename('ryan.jpeg');
+        $genusNote->setNote('some long note');
+        $genusNote->setCreatedAt(new \DateTime('-1 month'));
+        $genusNote->setGenus($genus);
+
+
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($genus);
+        $em->persist($genusNote);
         $em->flush();
 
         return new Response('<html><body>Genus Create</body></html>');

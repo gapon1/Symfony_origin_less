@@ -33,6 +33,27 @@ class GenusNote
         return $this->id;
     }
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Genus")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    public $genus;
+
+    /**
+     * @return mixed
+     */
+    public function getGenus()
+    {
+        return $this->genus;
+    }
+
+    /**
+     * @param mixed $genus
+     */
+    public function setGenus(Genus $genus)
+    {
+        $this->genus = $genus;
+    }
 
     /**
      * @ORM\Column(type="string")
