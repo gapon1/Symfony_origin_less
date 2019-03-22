@@ -40,7 +40,7 @@ class Genus
     private $isPublished = true;
 
     /**
-     * @return mixed
+     * @return ArrayCollection|GenusNote[]
      */
     public function getNotes()
     {
@@ -49,6 +49,7 @@ class Genus
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\GenusNote", mappedBy="genus")
+     * @ORM\OrderBy({"createdAt"="DESC"})
      *
      */
     private $notes;
