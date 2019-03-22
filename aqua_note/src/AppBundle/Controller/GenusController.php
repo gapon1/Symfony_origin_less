@@ -47,7 +47,10 @@ class GenusController extends Controller
     public function listAtion()
     {
         $em = $this->getDoctrine()->getManager();
-        $genuses = $em->getRepository("AppBundle:Genus")->findAll();
+
+
+        // Shoe data use method ========= findAllPublishedBySize
+        $genuses = $em->getRepository("AppBundle:Genus")->findAllPublishedBySize();
 
         return $this->render("genus/list.html.twig", [
             "genuses" => $genuses,

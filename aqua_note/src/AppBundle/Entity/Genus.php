@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  * Class Genus
  * @package AppBundle\Entity
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GenusRepository")
  * @ORM\Table(name="genus")
  */
 class Genus
@@ -33,6 +33,26 @@ class Genus
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublished;
+
+    /**
+     * @return mixed
+     */
+    public function getisPublished()
+    {
+        return $this->isPublished;
+    }
+
+    /**
+     * @param mixed $isPublished
+     */
+    public function setIsPublished($isPublished)
+    {
+        $this->isPublished = $isPublished;
+    }
 
     /**
      * @ORM\Column(type="string")
@@ -115,5 +135,6 @@ class Genus
     {
         return new \DateTime('-'.rand(0, 100).'days');
     }
+
 
 }

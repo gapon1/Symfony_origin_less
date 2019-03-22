@@ -4,3 +4,4 @@ AppBundle\Entity\Genus:
     subFamily: <text(24)>
     specCount: <numberBetween(100, 100000)>
     funFact: <sentence()>
+    isPublished: <boolean(75)>
