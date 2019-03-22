@@ -60,7 +60,7 @@ class GenusController extends Controller
 
 
         // Shoe data use method ========= findAllPublishedBySize
-        $genuses = $em->getRepository("AppBundle:Genus")->findAllPublishedBySize();
+        $genuses = $em->getRepository("AppBundle:Genus")->findAllPublishedByRecentlyActive();
 
         return $this->render("genus/list.html.twig", [
             "genuses" => $genuses,
