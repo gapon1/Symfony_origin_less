@@ -3,11 +3,8 @@
 namespace AppBundle\DataFixture\ORM;
 
 
-use Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Nelmio\Alice\FixtureSet;
-use Nelmio\Alice\Loader\FakeDataLoader;
 use Nelmio\Alice\Loader\NativeLoader;
 
 
@@ -30,29 +27,6 @@ class LoadFixtures extends Fixture
         $manager->flush();
     }
 
-    public function genus()
-    {
-        $genera = [
-            'Octopus',
-            'Balaena',
-            'Orcinus',
-            'Hippocampus',
-            'Asterias',
-            'Amphiprion',
-            'Carcharodon',
-            'Aurelia',
-            'Cucumaria',
-            'Balistoides',
-            'Paralithodes',
-            'Chelonia',
-            'Trichechus',
-            'Eumetopias'
-        ];
-
-        $key = array_rand($genera);
-
-        return $genera[$key];
-    }
 
 
 }

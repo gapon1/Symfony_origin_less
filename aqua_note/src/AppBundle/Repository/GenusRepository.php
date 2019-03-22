@@ -8,7 +8,6 @@
 
 namespace AppBundle\Repository;
 
-
 use AppBundle\Entity\Genus;
 use Doctrine\ORM\EntityRepository;
 
@@ -21,10 +20,11 @@ class GenusRepository extends EntityRepository
      */
     public function findAllPublishedBySize()
     {
-        return $this->createQueryBuilder('genus')
+        return $this
+            ->createQueryBuilder('genus')
             ->andWhere('genus.isPublished = :isPublished')
             ->setParameter('isPublished', true)
-            ->orderBy('genus.specCount', 'DESC')
+            ->orderBy('genus.specCount', 'ASC')
             ->getQuery()
             ->execute();
     }
