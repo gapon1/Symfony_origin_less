@@ -8,6 +8,7 @@
             <th>Genus</th>
             <th># of species</th>
             <th>Fun Fact</th>
+            <th>Family</th>
             <th>Updated</th>
         </tr>
         </thead>
@@ -22,6 +23,7 @@
             </td>
             <td>{{ genus.specCount }}</td>
             <td>{{ genus.funFact }}</td>
+            <td>{{ genus.subFamily }}</td>
             <td>{{ genus.updated|date('Y-m-d') }}</td>
         </tr>
         {% endfor %}
