@@ -109,14 +109,15 @@ class GenusController extends Controller
 
 
     /**
-     * @Route("/genus/{genusName}/notes", name="genus_show_notes")
+     * @Route("/genus/{name}/notes", name="genus_show_notes")
      * @Method("GET")
      *
      */
 
-    public function getNotesAction()
+    public function getNotesAction(Genus $genus)
     {
 
+        dump($genus);
 
         $notes = [
             ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'date' => 'Dec. 12, 2019'],
