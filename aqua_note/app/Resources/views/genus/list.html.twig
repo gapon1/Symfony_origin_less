@@ -13,10 +13,13 @@
         </thead>
 
         <tbody>
+
         {% for genus in genuses %}
 
         <tr>
-            <td>{{ genus.name }}</td>
+            <td>
+            <a href="{{ path('genus_show', {'genusName': genus.name })  }}"> {{ genus.name }}</a>
+            </td>
             <td>{{ genus.specCount }}</td>
             <td>{{ genus.funFact }}</td>
             <td>{{ genus.updated|date('Y-m-d') }}</td>
