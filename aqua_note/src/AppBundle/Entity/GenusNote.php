@@ -34,7 +34,7 @@ class GenusNote
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Genus")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Genus", inversedBy="notes")
      * @ORM\JoinColumn(nullable=false)
      */
     public $genus;

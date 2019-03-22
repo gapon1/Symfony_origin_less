@@ -117,7 +117,9 @@ class GenusController extends Controller
     public function getNotesAction(Genus $genus)
     {
 
-        dump($genus);
+        foreach ($genus->getNotes() as $note){
+            dump($note);
+        }
 
         $notes = [
             ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'date' => 'Dec. 12, 2019'],
