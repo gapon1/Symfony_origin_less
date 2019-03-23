@@ -79,6 +79,8 @@ class Genus
      * @ORM\Column(type="string")
      */
     private $subFamily;
+
+
     /**
      * @ORM\Column(type="integer")
      */
