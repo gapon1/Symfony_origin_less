@@ -7,6 +7,14 @@ services:
     app.markdown_transformer:
         class: AppBundle\Service\MarkdownTransformer
         arguments: ['@markdown.parser']
+
+    app.markdown_extension:
+        class: AppBundle\Twig\MarkdownExtension
+        tags:
+            - { name: twig.extension }
+        arguments: ['@app.markdown_transformer']
+        auwrite: true
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services

@@ -28,7 +28,7 @@ class GenusController extends Controller
     public function newAction()
     {
         $genus = new Genus();
-        $genus->setName("ocupus".rand(0, 100));
+        $genus->setName("ocupus" . rand(0, 100));
         $genus->setFunFact("fun fact");
         $genus->setSubFamily("Ocupus");
         $genus->setSpecCount(rand(100, 999));
@@ -39,7 +39,6 @@ class GenusController extends Controller
         $genusNote->setNote('some long note');
         $genusNote->setCreatedAt(new \DateTime('-1 month'));
         $genusNote->setGenus($genus);
-
 
 
         $em = $this->getDoctrine()->getManager();
@@ -81,29 +80,13 @@ class GenusController extends Controller
         $em = $this->getDoctrine()->getManager();
         $genus = $em->getRepository('AppBundle:Genus')->findOneBy(['name' => $genusName]);
 
-        if (!$genus){
+        if (!$genus) {
             throw $this->createNotFoundException("No found Line");
         }
 
 
         $transformer = $this->get('app.markdown_transformer');
-
-
         $funFact = $transformer->parse($genus->getFunFact());
-
-        /*
-        $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
-        $key = md5($funFact);
-
-        if ($cache->contains($key)){
-            $funFact = $cache->fetch($key);
-        }else{
-            sleep(1);
-            $funFact = $this->get('markdown.parser')->transform($funFact);
-
-            $cache->save($key, $funFact);
-        }
-*/
 
 
         $recentNotes = $em->getRepository('AppBundle:GenusNote')
@@ -129,17 +112,16 @@ class GenusController extends Controller
     {
 
         $notes = [];
-        foreach ($genus->getNotes() as $note){
+        foreach ($genus->getNotes() as $note) {
             $notes[] = [
-              'id' => $note->getId(),
+                'id' => $note->getId(),
                 'username' => $note->getUsername(),
-                'avatarUri' => '/images/'.$note->getUseAvatarFilename(),
+                'avatarUri' => '/images/' . $note->getUseAvatarFilename(),
                 'note' => $note->getNote(),
                 'date' => $note->getCreatedAt()->format('M d, Y')
             ];
 
         }
-
 
 
         $data = [
