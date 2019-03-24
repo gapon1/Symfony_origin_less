@@ -8,7 +8,7 @@
 
 namespace AppBundle\Form;
 
-
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,13 +19,21 @@ class GenusFormType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('subFamily')
             ->add('specCount')
-            ->add('funFact');
+            ->add('funFact')
+            ->add('isPublished')
+            ->add('firstDiscoveredAt')
+
+        ;
 
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\Genus'
+        ]);
 
     }
 

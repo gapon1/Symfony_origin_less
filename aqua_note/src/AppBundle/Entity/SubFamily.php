@@ -45,4 +45,10 @@ class SubFamily
      */
     private $name;
 
+    public function __toString( )
+    {
+
+        return  $this->getName();
+    }
+
 }
