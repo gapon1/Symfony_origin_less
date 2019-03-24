@@ -11,6 +11,9 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use AppBundle\Entity\SubFamily;
 
 /**
  * Class Genus
@@ -47,6 +50,11 @@ class Genus
         return $this->notes;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\GenusNote", mappedBy="genus")
      * @ORM\OrderBy({"createdAt"="DESC"})
@@ -76,7 +84,9 @@ class Genus
     }
 
     /**
-     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubFamily")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $subFamily;
 
@@ -98,6 +108,11 @@ class Genus
         return $this->name;
     }
 
+    /**
+     * @Assert\NotBlank()
+     * @ORM\Column(type="date")
+     */
+    private $firstDiscoveredAt;
     /**
      * @param mixed $name
      */
@@ -160,4 +175,13 @@ class Genus
     }
 
 
+    public function getFirstDiscoveredAt()
+    {
+        return $this->firstDiscoveredAt;
+    }
+
+    public function setFirstDiscoveredAt(\DateTime $firstDiscoveredAt = null)
+    {
+        $this->firstDiscoveredAt = $firstDiscoveredAt;
+    }
 }

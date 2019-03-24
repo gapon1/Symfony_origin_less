@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pro
- * Date: 2019-03-23
- * Time: 23:59
- */
 
 namespace AppBundle\Form;
 
@@ -19,14 +13,18 @@ class GenusFormType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('subFamily')
             ->add('specCount')
-            ->add('funFact');
-
+            ->add('funFact')
+            ->add('isPublished')
+            ->add('firstDiscoveredAt')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\Genus'
+        ]);
     }
-
 }
