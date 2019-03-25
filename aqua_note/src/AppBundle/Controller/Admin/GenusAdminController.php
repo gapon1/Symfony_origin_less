@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class GenusAdminController extends Controller
 {
+
+    // ================== Show ALL Data   =============
     /**
      * @Route("/genus", name="admin_genus_list")
      */
@@ -26,6 +28,8 @@ class GenusAdminController extends Controller
             'genuses' => $genuses
         ));
     }
+
+    // ================== ADD Data in form =============
 
     /**
      * @Route("/genus/new", name="admin_genus_new")
@@ -52,6 +56,8 @@ class GenusAdminController extends Controller
             'genusForm' => $form->createView()
         ]);
     }
+
+    // ================== Update Data in form =============
 
     /**
      * @Route("/genus/{id}/edit", name="admin_genus_edit")
