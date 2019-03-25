@@ -33,6 +33,7 @@ class Genus
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $name;
@@ -92,6 +93,8 @@ class Genus
 
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Range(min="0", minMessage="Negative species")
      * @ORM\Column(type="integer")
      */
     private $specCount;
