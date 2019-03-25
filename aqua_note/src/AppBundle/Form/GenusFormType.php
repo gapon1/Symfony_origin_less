@@ -3,10 +3,15 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Entity\SubFamily;
+use AppBundle\Repository\SubFamilyRepository;
+use Doctrine\DBAL\Types\DateType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Date;
 
 class GenusFormType extends AbstractType
 {
@@ -14,19 +19,28 @@ class GenusFormType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('subFamily', null, [
-                'placeholder' => 'Choose a sub family'
+            ->add('subFamily', EntityType::class, [
+                'placeholder' => 'Choose a sub family',
+                'class' => SubFamily::class,
+                'query_builder' => function (SubFamilyRepository $repo) {
+                    return $repo->createAlphabeticalQueryBuilder();
+                }
             ])
             ->add('specCount')
             ->add('funFact')
             ->add('isPublished', ChoiceType::class, [
                 'choices' => [
-                'Yes' => true,
-                'No' => false,
+                    'Yes' => true,
+                    'No' => false,
                 ]
             ])
-            ->add('firstDiscoveredAt')
-        ;
+            ->add('firstDiscoveredAt', \Symfony\Component\Form\Extension\Core\Type\DateType::class, [
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'js-datepicker'
+                ],
+                'html5' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
