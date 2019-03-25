@@ -21,3 +21,5 @@ AppBundle\Entity\SubFamily:
 AppBundle\Entity\User:
     user_{1..5}:
       email: weaverryan+<current()>
+      plainPassword: iliketurtles
+

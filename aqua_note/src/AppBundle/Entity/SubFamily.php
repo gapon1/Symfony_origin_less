@@ -39,8 +39,18 @@ class SubFamily
         $this->name = $name;
     }
 
+<<<<<<< HEAD
     public function __toString()
     {
         return $this->getName();
     }
 }
+=======
+    public function __toString( )
+    {
+
+        return  $this->getName();
+    }
+
+}
+>>>>>>> origin/master
