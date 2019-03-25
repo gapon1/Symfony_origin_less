@@ -17,3 +17,7 @@ AppBundle\Entity\GenusNote:
 AppBundle\Entity\SubFamily:
   sub.family_{1..5}:
     name: <lastName()>
+
+AppBundle\Entity\User:
+    user_{1..5}:
+      email: weaverryan+<current()>
