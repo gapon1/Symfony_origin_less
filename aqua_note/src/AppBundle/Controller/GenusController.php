@@ -30,7 +30,7 @@ class GenusController extends Controller
         $genus = new Genus();
         $genus->setName("ocupus" . rand(0, 100));
         $genus->setFunFact("fun fact");
-        $genus->setSubFamily("Hapon");
+        $genus->setSubFamily('Octopodinae');
         $genus->setSpecCount(rand(100, 999));
 
         $genusNote = new GenusNote();
