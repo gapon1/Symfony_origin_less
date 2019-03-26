@@ -38,10 +38,16 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('success', ' Welcome'. $user->getEmail());
+            $this->addFlash('success', ' Welcome ' . $user->getEmail());
 
-            return $this->redirectToRoute('homepage');
 
+            return $this->get('security.authentication.guard_handler')
+                ->authenticateUserAndHandleSuccess(
+                    $user,
+                    $request,
+                    $this->get('app.security.login_form_authenticator'),
+                    'main'
+                    );
         }
 
 
