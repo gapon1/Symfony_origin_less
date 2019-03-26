@@ -59,10 +59,12 @@ class GenusNote
      * @ORM\Column(type="string")
      */
     private $username;
+
     /**
      * @ORM\Column(type="string")
      */
     private $useAvatarFilename;
+
     /**
      * @ORM\Column(type="text")
      */

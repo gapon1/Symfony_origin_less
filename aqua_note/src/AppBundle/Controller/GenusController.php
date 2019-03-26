@@ -9,8 +9,11 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\AppBundle;
 use AppBundle\Entity\Genus;
 use AppBundle\Entity\GenusNote;
+use AppBundle\Entity\SubFamily;
+use AppBundle\Repository\SubFamilyRepository;
 use AppBundle\Service\MarkdownTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,11 +30,15 @@ class GenusController extends Controller
      */
     public function newAction()
     {
+
+
+
         $genus = new Genus();
         $genus->setName("ocupus" . rand(0, 100));
         $genus->setFunFact("fun fact");
-        $genus->setSubFamily('Octopodinae');
+        $genus->setSubFamily('dsvdv');
         $genus->setSpecCount(rand(100, 999));
+
 
         $genusNote = new GenusNote();
         $genusNote->setUsername('vitalii');

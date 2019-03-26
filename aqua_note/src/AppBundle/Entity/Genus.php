@@ -69,12 +69,17 @@ class Genus
     {
         $this->isPublished = $isPublished;
     }
+
+
     /**
      * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubFamily")
      * @ORM\JoinColumn(nullable=true)
      */
     private $subFamily;
+
+
+
     /**
      * @ORM\Column(type="integer")
      */

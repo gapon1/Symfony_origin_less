@@ -2,6 +2,6 @@
 
 {% block body %}
 
-<h1 class="page-header text-center">Welcome aquanotes</h1>
+<h1 class="page-header text-center">Welcome {{ app.user ? app.user.email : 'aquanotes' }}</h1>
 
 {% endblock %}

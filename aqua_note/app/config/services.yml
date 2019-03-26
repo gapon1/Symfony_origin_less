@@ -19,6 +19,8 @@ services:
         class: AppBundle\Security\LoginFormAuthenticator
         autowire: true
 
+
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
